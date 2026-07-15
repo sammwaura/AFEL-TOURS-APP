@@ -1,1 +1,21 @@
 @import "tailwindcss";
+
+@theme {
+    --color-ink: #14232E;
+  --color-paper: #F7F3EC;
+  --color-brass: #B8934A;
+  --color-moss: #4A5D50;
+  --color-charcoal: #2B2B28;
+  --color-line: #D8CFC0;
+
+    --font-display: "Fraunces", serif;
+  --font-body: "Inter", sans-serif;
+  --font-mono: "IBM Plex Mono", monospace;
+
+}
+
+body {
+  font-family: var(--font-body);
+  background-color: var(--color-paper);
+  color: var(--color-charcoal);
+}
