@@ -5,6 +5,7 @@ import dotenv from "dotenv";
 import hotelRoutes from "./routes/hotelRoutes.js";
 import roomRoutes from "./routes/roomRoutes.js";
 import bookingRoutes from "./routes/bookingRoutes.js";  
+import uploadRoutes from "./routes/uploadRoutes.js";
 
 dotenv.config();
 
@@ -27,9 +28,12 @@ const connectDB = async () => {
     }
 };
 
+app.use('/uploads', express.static('uploads'));
 app.use("/api/hotels", hotelRoutes);
 app.use("/api/rooms", roomRoutes);
 app.use("/api/bookings", bookingRoutes);
+app.use("/api/upload", uploadRoutes);
+
 
 app.get("/", (req, res) => {
     res.send("Welcome to the Afel Tours API");
