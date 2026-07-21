@@ -78,7 +78,30 @@ function Home() {
             </section>
 
             {/*Featured Roooms*/}
-            
+            <section className="max-w-6xl mx-auto px-6 py-16">
+                <div className="flex items-baseline justify-between mb-8 border-b border-line pb-4">
+                    <h2 className="font-display text-3xl text-ink">Featured Stays</h2>
+                    <span className="font-mono text-xs uppercase tracking-wide text-moss">
+                        {featuredRooms.length} rooms
+                    </span>
+                </div>
+
+                {loading ? (
+                    <p className="font-mono text-sm text-charcoal/60">Loading rooms.......</p>
+                ) : featuredRooms.length === 0 ? (
+                    <p className="font-mono text-sm text-charcoal/60">
+                        No Featured rooms yet - mark a room as "featured: true" in the database to see it here.
+                    </p>
+                ) : (
+                    <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+                        {featuredRooms.map((room) => (
+                            <RoomCard key={room._id} room={room} />
+                        ))}
+                    </div>
+                )}
+            </section>
         </div>
     )
 }
+
+export default Home
