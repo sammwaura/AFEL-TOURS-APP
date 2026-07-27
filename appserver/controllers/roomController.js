@@ -29,7 +29,7 @@ export const createRoom = async (req, res) => {
             const updatedRoom = await Room.findByIdAndUpdate(
                 id,
                 {$set: req.body},
-                {new: true}
+                {returnDocument: 'after'}
             );
             res.status(200).json({
                 success: true,
