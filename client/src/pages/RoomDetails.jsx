@@ -117,7 +117,69 @@ function RoomDetails () {
                             })}
                         </div>
 
-                        
+                        <p className="font-mono text-sm text-charcoal/60 mt-4">
+                            Sleeps up to {room.maxGuests} guests
+                        </p>
+                    </div>
+                </div>
+
+                {/* Right: booking card */}
+                <div>
+                    <div className="border-2 border-brass p-6 sticky top-6">
+                        <div className="flex items-baseline gap-1 mb-6 border-b border-line pb-4">
+                            <span className="font-mono text-2xl text-ink">
+                                KES {room.pricePerNight?.toLocaleString()}
+                            </span>
+                            <span className="font-mono text-sm text-charcoal/60">/ night</span>
+                        </div>
+
+                        <label className="block font-mono text-xs uppercase tracking-wide text-moss mb-1">
+                            Check-In
+                        </label>
+                        <input type="date" value={checkIn} onChange={(e) => {
+                            setCheckIn(e.target.value); 
+                            setAvailability(null);
+                            setBookingResult(null)
+                        }}
+                        className='w-full border border-line px-3 py-2 mb-4 font-mono text-sm outline-none focus:border-brass' />
+
+                        <label className="block font-mono text-xs uppercase tracking-wide text-moss mb-1">
+                            Check-out
+                        </label>
+                        <input type="date" value={checkOut} onChange={(e) => {
+                            setCheckOut(e.target.value);
+                            setAvailability(null);
+                            setBookingResult(null)
+                        }}
+                        className='w-full border border-line px-3 py-2 mb-4 font-mono text-sm outline-none focus:border-brass' />
+
+                        <label className="block font-mono text-xs uppercase tracking-wide text-moss mb-1">Guests</label>
+                        <input type="number" min= "1" max={room.maxGuests} value={guests} onChange={(e) => setGuests(Number,(e.target.value))}
+                        className='w-full border border-line px-3 py-2 mb-4 font-mono outline-none focus:border-brass'/>
+
+                        {nights > 0 && (
+                            <div className="font-mono text-sm text-charcoal/70 mb-4 border-t border-line pt-3">
+                                <div className="flex justify-between mb-1">
+                                    <span>{nights} night{nights !== 1 ? 's' : ''}</span>
+                                    <span>KES {totalPrice.toLocaleString()} </span>
+                                </div>
+                            </div>
+                        )}
+
+                        <button
+                            onClick={handleCheckAvailability}
+                            disabled={!checkIn || !checkOut || checkAvailability}
+                            className='w-full border border-ink text-ink font-mono text-sm uppercase tracking-wide py-2.5 mb-3 hover:bg-ink hover:text-paper transition-colors disabled:opacity-40 disabled:cursor-not-allowed'
+                        >
+                            {checkAvailability ? 'Checking....' : 'Check Availability'}
+                        </button>
+
+                        {availability=== true  && (
+                            <p className="font-mono  text-xs text-moss mb-3">✓ Available for these dates</p>
+                        )}
+                        {availability === false && (
+                            <p className="font-mono text-xs text-red-700 mb-3">✓ Not available for these dates</p>
+                        )}
                     </div>
                 </div>
             </div>
