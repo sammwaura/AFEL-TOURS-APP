@@ -180,12 +180,31 @@ function RoomDetails () {
                         {availability === false && (
                             <p className="font-mono text-xs text-red-700 mb-3">✓ Not available for these dates</p>
                         )}
+
+                        {!isSigned ? (
+                            <SignInButton mode='modal'>
+                                <button className='w-full bg-brass text-ink font-mono text-sm upperclass tracking-wide py-3 hover:bg-ink hover:text-brass transition-colors'>
+                                    Sign In to Book
+                                </button>
+                            </SignInButton>
+                        ) : (
+                            <button onClick={handleBook} disabled={availability !== true || booking}
+                                    className='w-full bg-brass text-ink font-mono text-sm uppercase tracking-wide py-3 hover:bg-ink  hover:text-brass transition-colors disabled:opacity-40 disabled:cursor-not-allowed'>
+                                        {booking ? 'Booking...' : 'Book Now'}                                
+                            </button>
+                        )}
+
+                        {bookingResult === 'success' && (
+                            <p className="font-mono text-xs text-moss mt-3">Booking Confirmed! Check "My Bookings" in the menu</p>
+                        )}
+                        {bookingResult === 'error' && (
+                            <p className="font-mono text-xs text-red-700 mt-3">Booking Failed! Please try again.</p>
+                        )}
                     </div>
                 </div>
             </div>
         </div>
     )
-
-
-    
 }
+
+export default RoomDetails
