@@ -18,7 +18,7 @@ function RoomListing () {
 
     useEffect(() => {
         setLoading(true)
-        searchRoooms({ city, maxGuests, minPrice, maxPrice })
+        searchRooms({ city, maxGuests, minPrice, maxPrice })
         .then(setRooms)
         .catch((err) => console.error('Search Failed:', err))
         .finally(() => setLoading(false))
@@ -62,7 +62,7 @@ function RoomListing () {
                 <div className="flex-1">
                     {loading ? (
                         <p className="font-mono text-sm text-charcoal/60">Loading rooms...</p>
-                    ) : rooms.length === 0 ? (
+                    ) : (rooms || []).length === 0 ? (
                         <div className="border border-line p-10 text-center">
                             <p className="font-display text-xl text-ink mb-2">No rooms found..</p>
                             <p className="font-mono text-sm text-charcoal/60">Try a different city or widen your price range</p>
@@ -72,7 +72,7 @@ function RoomListing () {
                         <p className="font-mono text-xs uppercase tracking-wide text-moss mb-4">
                             {rooms.length} room{ rooms.length !== 1 ? 's' : ''} found
                         </p>
-                        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap- 6">{rooms.map((room) => (
+                        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap- 6">{(rooms || []).map((room) => (
                             <RoomCard key={room._id} room={room}></RoomCard>
                         ))}
                         </div>

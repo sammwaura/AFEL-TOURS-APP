@@ -18,7 +18,7 @@ function PhotoGallery({ photos = [] }){
 
             {displayPhotos.length > 1 && (
                 <div className="flex gap-2 overflow-x-auto">
-                    {displayPhotos.map((photo, i) = (
+                    {displayPhotos.map((photo, i) => (
                         <button
                         key={i}
                         onClick={() => setActiveIndex(i)}
