@@ -3,7 +3,7 @@ import { useState } from "react";
 
 function PhotoGallery({ photos = [] }){
     const [activeIndex, setActiveIndex] = useState(0)
-    const displayPhotos = photos.length > 0 ? photos : ['/placeholder-room.jpg']
+    const displayPhotos = photos.length > 0 ? photos : ['/placeholder-rooms.jpg']
 
     return (
         <div>

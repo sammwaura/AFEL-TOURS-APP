@@ -21,7 +21,7 @@ const isRoomAvailable = async (roomId, checkIn, checkOut, excludeBookingId = nul
 
 // create a new booking
 export const createBooking = async (req, res) => {
-    const { room, hotel, userId, userEmail, checkIn, checkOut, guests, totalPrice } = req.body;
+    const { room, hotel, userId, userEmail, checkIn, checkOut, guests, hasKids, kidsAges, totalPrice } = req.body;
 
     try {
         // Check if the room is available for the specified dates
@@ -63,6 +63,8 @@ export const createBooking = async (req, res) => {
             checkIn,
             checkOut,
             guests,
+            hasKids: hasKids || false,
+            kidsAges: hasKids ? (kidsAges || []) : [],
             totalPrice,
         });
 

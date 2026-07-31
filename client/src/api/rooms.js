@@ -15,7 +15,7 @@ export const searchRooms = async({ city, maxGuests, minPrice, maxPrice}) => {
     if (maxPrice) params.append('maxPrice', maxPrice)
 
     const res = await axios.get(
-        `{API_URL}/rooms/search/getRoomsBySearch?${params.toString()}`
+        `${API_URL}/rooms/search/getRoomsBySearch?${params.toString()}`
     )
     return res.data.data || []
 }

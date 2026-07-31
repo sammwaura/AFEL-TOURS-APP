@@ -31,6 +31,15 @@ const BookngSchema = new moongoose.Schema({
             type: Number,
             required: true,
         },
+    hasKids: {
+        type: Boolean,
+        default: false,
+    },
+    kidsAges: {
+        type: [Number], //eg, [4-7]
+        default:[],
+    },
+
     totalPrice: {
         type: Number,
         required: true,

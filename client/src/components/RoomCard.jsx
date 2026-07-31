@@ -5,7 +5,7 @@ function RoomCard({room}) {
     const  [imgError, setImgError] = useState(false)
 
     const photos  = room.photos && room.photos.length > 0 ? room.photos : []
-    const photo = !imgError && photos.lengthn > 0 ? photos[0] : 'placeholder-room.jpg'
+    const photo = !imgError && photos.length > 0 ? photos[0] : 'placeholder-room.jpg'
 
     
     return (
