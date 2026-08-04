@@ -9,9 +9,9 @@ function NavBar() {
                 Ledger & Key
                 </Link>
 
-                <nav className='flex items-center gap-6 font-mono teext-sm uppercase tracking-wide'>
-                    <Link to="/rooms" className='hover:text-brass transition-colors'>
-                    Rooms
+                <nav className='flex items-center gap-6 font-mono text-sm uppercase tracking-wide'>
+                    <Link to="/hotels" className='hover:text-brass transition-colors'>
+                    Hotels
                     </Link>
 
                     <SignedOut>
