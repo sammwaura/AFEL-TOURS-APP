@@ -202,3 +202,24 @@ export const getRoomCount = async (req, res) => {
         });
     }
 };
+
+//get all rooms bbelonging to a specific  hotel
+export const getRoomsByHotel = async (req, res) => {
+    const { hotelId } = req.params;
+
+    try {
+        const rooms =  await Room.find({ hotel : hotelId });
+
+        res.status(200).json({
+            success: true,
+            message: 'Successful',
+            data: rooms,
+        });
+    } catch (err) {
+        res.status(500).json({
+            success: false,
+            message: 'Not Found',
+            data: err.message,
+        });
+    }
+};

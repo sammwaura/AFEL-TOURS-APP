@@ -1,5 +1,14 @@
 import express from "express";
-import { createRoom, updateRoom, deleteRoom, getAllRooms, getSingleRoom, getRoomsBySearch, getFeaturedRooms, getRoomCount } from "../controllers/roomController.js";
+import { createRoom, 
+    updateRoom, 
+    deleteRoom, 
+    getAllRooms, 
+    getSingleRoom, 
+    getRoomsBySearch, 
+    getFeaturedRooms, 
+    getRoomCount,
+    getRoomsByHotel,
+} from "../controllers/roomController.js";
 
 const router = express.Router();
 
@@ -7,6 +16,7 @@ const router = express.Router();
 router.get("/search/getRoomsBySearch", getRoomsBySearch);
 router.get("/featured/getFeaturedRooms", getFeaturedRooms);
 router.get("/getRoomCount", getRoomCount);
+router.get("/hotel/:hotel", getRoomsByHotel);
 
 router.post("/", createRoom);   
 router.put("/:id", updateRoom);
