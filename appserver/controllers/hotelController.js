@@ -128,3 +128,33 @@ export const createHotel = async (req, res) => {
             }); 
         }
     };
+
+    // search hotels by name and /or city
+    export const getHotelsBySearch = async (req, res) => {
+        const { name, city } =  req.query;
+
+        try {
+            const filter = {};
+
+            if (name){
+                filter.name = new RegExp(name, 'i'); // case-insensitive partial match
+            }
+            if (city){
+                filter.city = new RegExp(city, 'i');
+            }
+
+            const hotels = await Hotell.find(filter);
+
+            res.status(200).json({
+                success: true,
+                message: 'Successful',
+                data: hotels
+            });
+        } catch (err) {
+            res.status(500).json ({
+                success:false,
+                message: 'Not Found',
+                error: err.message,
+            });
+        }
+    };
