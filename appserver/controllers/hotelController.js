@@ -143,7 +143,7 @@ export const createHotel = async (req, res) => {
                 filter.city = new RegExp(city, 'i');
             }
 
-            const hotels = await Hotell.find(filter);
+            const hotels = await Hotel.find(filter);
 
             res.status(200).json({
                 success: true,
