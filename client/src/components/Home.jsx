@@ -30,10 +30,10 @@ function Home() {
             <section className="bg-ink text-paper">
                 <div className="max-w-6xl mx-auto px-6 pt-20 pb-16">
                     <p className="font-mono text-xs uppercase tracking-wideset text-brass mb-4">
-                        Est. reservation, no fuss
+                        we converge nature & culture to create unforgettable experiences
                     </p>
                     <h1 className="font-display text-5xl md:text-6xl leading-tight max-w-2xl mb-10">
-                        A room held for you, wherever the road leads.
+                     Explore the best of Kenya with our curated travel experiences.
                     </h1>
 
                     {/* Search bar - "key-card" styled*/}

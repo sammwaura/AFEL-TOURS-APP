@@ -6,7 +6,7 @@ function NavBar() {
         <header className='bg-ink text-paper'>
             <div className='max-w-6xl mx-auto px-6 py-4 flex items-center justify-between'>
                 <Link to="/" className='font-display text-2xl tracking-tight'>
-                Ledger & Key
+                AFEL TOURS KENYA
                 </Link>
 
                 <nav className='flex items-center gap-6 font-mono text-sm uppercase tracking-wide'>
