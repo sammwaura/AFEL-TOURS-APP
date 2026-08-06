@@ -12,7 +12,7 @@ function HotelDetails() {
     const [hotel, setHotel] = useState(null);
     const [roomTypes, setRoomTypes] = useState(null);
     const[selectedRoom, setSelectedRoom] = useState(null);
-    cpnst [loading, setLoading] = useState(true);
+    const [loading, setLoading] = useState(true);
 
     useEffect(() => {
         Promise.all([getSingleHotel(id), getRoomsByHotel(id)])

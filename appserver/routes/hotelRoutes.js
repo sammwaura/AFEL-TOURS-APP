@@ -9,12 +9,14 @@ import { createHotel,
 
 const router = express.Router();
 
+
+router.get('/search/getHotelsBySearch', getHotelsBySearch);
+router.get("/owner/:ownerId", getOwnerHotels);
+router.get("/:id", getSingleHotel);
+router.get("/", getAllHotels);
 router.post("/", createHotel);
 router.put("/:id", updateHotel);
 router.delete("/:id", deleteHotel);
-router.get("/", getAllHotels);
-router.get("/owner/:ownerId", getOwnerHotels);
-router.get("/:id", getSingleHotel);
-router.get('/search/getHotelsBySearch', getHotelsBySearch);
+
 
 export default router;

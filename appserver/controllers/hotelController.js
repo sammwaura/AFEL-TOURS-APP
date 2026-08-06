@@ -67,7 +67,7 @@ export const createHotel = async (req, res) => {
     export const getSingleHotel = async (req, res) => {
         const id = req.params.id;
         try {
-            const hotel = await Hotel.findById();
+            const hotel = await Hotel.findById(id);
         if(!hotel){
             return res.status(404).json({
                 success: false,

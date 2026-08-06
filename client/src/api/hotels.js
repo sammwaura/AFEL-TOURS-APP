@@ -22,3 +22,8 @@ export const getSingleHotel = async (id ) => {
     const res =  await axios.get(`${API_URL}/hotels/${id}`);
     return res.data.data || {}
 }
+
+export const getFeaturedHotels = async () => {
+    const res = await axios.get(`${API_URL}/hotels`)
+    return (res.data.data || []).slice(0, 8)
+}
