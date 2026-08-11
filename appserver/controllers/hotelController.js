@@ -26,7 +26,7 @@ export const createHotel = async (req, res) => {
             const updatedHotel = await Hotel.findByIdAndUpdate(
                 id,
                 { $set: req.body },
-                { new: true }
+                { returnDocument: 'after' }
             );
             res.status(200).json({
                 success: true,
