@@ -4,6 +4,7 @@ import Home from './components/Home'
 import HotelListing from './pages/HotelListing'
 import HotelDetails from './pages/HotelDetails'
 import Inquiry from './pages/Inquiry'
+import MyInquiries from './pages/MyInquiries'
 
 
 function App() {
@@ -16,7 +17,7 @@ function App() {
         <Route path='/hotels' element={<HotelListing />} />
         <Route path='/hotels/:id' element={<HotelDetails />} />
         <Route path='/inquire/:roomId' element={<Inquiry />} />
-  
+        <Route path='/my-bookings' element={<MyInquiries />} />
       </Routes>
     </div>
   )

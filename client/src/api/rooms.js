@@ -21,7 +21,7 @@ export const searchRooms = async({ city, maxGuests, minPrice, maxPrice}) => {
 }
 
 export const getSingleRoom = async (id) => {
-    const res = awaitaxios.get(`${API_URL}/rooms/${id}`)
+    const res = await axios.get(`${API_URL}/rooms/${id}`)
     return res.data.data
 }
 
