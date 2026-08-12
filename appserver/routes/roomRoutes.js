@@ -16,12 +16,13 @@ const router = express.Router();
 router.get("/search/getRoomsBySearch", getRoomsBySearch);
 router.get("/featured/getFeaturedRooms", getFeaturedRooms);
 router.get("/getRoomCount", getRoomCount);
-router.get("/hotel/:hotel", getRoomsByHotel);
+
 
 router.post("/", createRoom);   
 router.put("/:id", updateRoom);
 router.delete("/:id", deleteRoom);
 router.get("/", getAllRooms);
+router.get("/hotel/:hotelId", getRoomsByHotel);
 router.get("/:id", getSingleRoom);
 
 export default router;
