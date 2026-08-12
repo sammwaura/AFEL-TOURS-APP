@@ -3,6 +3,7 @@ import Navbar from './components/NavBar'
 import Home from './components/Home'
 import HotelListing from './pages/HotelListing'
 import HotelDetails from './pages/HotelDetails'
+import Inquiry from './pages/Inquiry'
 
 
 function App() {
@@ -14,6 +15,7 @@ function App() {
         <Route path='/' element={<Home />} />
         <Route path='/hotels' element={<HotelListing />} />
         <Route path='/hotels/:id' element={<HotelDetails />} />
+        <Route path='/inquire/:roomId' element={<Inquiry />} />
   
       </Routes>
     </div>
