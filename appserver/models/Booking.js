@@ -1,13 +1,13 @@
-import moongoose from 'mongoose';
+import mongoose from 'mongoose';
 
-const BookngSchema = new moongoose.Schema({
+const BookingSchema = new mongoose.Schema({
     room: {
-        type: moongoose.Schema.Types.ObjectId,
+        type: mongoose.Schema.Types.ObjectId,
         ref: "Room",
         required: true,
     },
     hotel: {
-        type: moongoose.Schema.Types.ObjectId,
+        type: mongoose.Schema.Types.ObjectId,
         ref: "Hotel",
         required: true,
     },
@@ -56,4 +56,4 @@ const BookngSchema = new moongoose.Schema({
 },
 { timestamps: true }
 );
-export default moongoose.model("Booking", BookngSchema);
+export default mongoose.model("Booking", BookingSchema);

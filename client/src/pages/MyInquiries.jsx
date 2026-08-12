@@ -16,20 +16,20 @@ function MyInquiries() {
 
 
     useEffect(() => {
-        if (!user) return
-        getUserBookings(user.id)
-            .then(setBookings)
-            .catch((err) => console.error('Failed to load Inquiries:', err))
-            .finally(() => setLoading(false))
-    }, [user])
+                    if (!user) return
+                    getUserBookings(user.id)
+                        .then(setBookings)
+                        .catch((err) => console.error('Failed to load Inquiries:', err))
+                        .finally(() => setLoading(false))
+                }, [user])
 
 
-    const formDate = (dateStr) =>
-        new Date(dateStr).toLocaleDateString('en-KE', {
-            day: 'numeric',
-            month: 'short',
-            year: 'numeric',
-        })
+            const formatDate = (dateStr) =>
+                new Date(dateStr).toLocaleDateString('en-KE', {
+                    day: 'numeric',
+                    month: 'short',
+                    year: 'numeric',
+     })
 
         return (
             <div className="max-w-4xl mx-auto px-6 py-12">

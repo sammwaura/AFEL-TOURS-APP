@@ -5,7 +5,7 @@ import Room from '../models/Room.js';
 const isRoomAvailable = async (roomId, checkIn, checkOut, excludeBookingId = null) => {
     const filter = {
         room: roomId,
-        status: { $ne: ['cancelled'] },
+        status: { $ne: 'cancelled' },
         //overlap condition: existing.checkIn < newBooking.checkOut && existingBooking.checkOut > newBooking.checkIn
         checkIn: { $lt: new Date(checkOut) },
         checkOut: { $gt: new Date(checkIn) },
@@ -25,7 +25,7 @@ export const createBooking = async (req, res) => {
 
     try {
         // Check if the room is available for the specified dates
-        if(newDate(checkIn)>= new Date(checkOut)){
+        if(new Date(checkIn)>= new Date(checkOut)){
             return res.status(400).json({
                 success: false,
                 message: "Check-in date must be before check-out date.",
