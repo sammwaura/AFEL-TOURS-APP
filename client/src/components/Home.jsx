@@ -27,8 +27,13 @@ function Home() {
     return(
         <div>
             {/*Hero*/}
-            <section className="bg-ink text-paper">
-                <div className="max-w-6xl mx-auto px-6 pt-20 pb-16">
+                <section
+                    className="relative text-paper bg-cover bg-center"
+                    style={{ backgroundImage: "url('/hero.jpg')" }}
+                    >
+                      <div className="absolute inset-0 bg-gradient-to-r from-charcoal/80 via-charcoal/40 to-transparent" />
+
+                    <div className="relative max-w-6xl mx-auto px-6 pt-20 pb-16">
                     <p className="font-mono text-xs uppercase tracking-wideset text-brass mb-4">
                         We converge nature & culture to create unforgettable experiences
                     </p>

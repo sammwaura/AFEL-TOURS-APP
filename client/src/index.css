@@ -1,17 +1,16 @@
 @import "tailwindcss";
 
 @theme {
-    --color-ink: #14232E;
-  --color-paper: #F7F3EC;
-  --color-brass: #B8934A;
-  --color-moss: #4A5D50;
-  --color-charcoal: #2B2B28;
-  --color-line: #D8CFC0;
+  --color-ink: #111111;
+  --color-paper: #FFFFFF;
+  --color-brass: #7DC242;
+  --color-moss: #4B7A2A;
+  --color-charcoal: #1A1A1A;
+  --color-line: #E3E8DD;
 
-    --font-display: "Fraunces", serif;
+  --font-display: "Poppins", sans-serif;
   --font-body: "Inter", sans-serif;
-  --font-mono: "IBM Plex Mono", monospace;
-
+  --font-mono: "Poppins", sans-serif;
 }
 
 body {
