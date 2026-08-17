@@ -6,6 +6,9 @@ import HotelListing from './pages/HotelListing'
 import HotelDetails from './pages/HotelDetails'
 import Inquiry from './pages/Inquiry'
 import MyInquiries from './pages/MyInquiries'
+import ServiceDetails from './pages/ServiceDetails'
+import ServiceCard from './components/ServiceCard'
+import ServiceInquiry from './pages/ServiceInquiry'
 
 
 function App() {
@@ -20,6 +23,8 @@ function App() {
           <Route path='/hotels/:id' element={<HotelDetails />} />
           <Route path='/inquire/:roomId' element={<Inquiry />} />
           <Route path='/my-bookings' element={<MyInquiries />} />
+          <Route path="/services/:slug" element={<ServiceDetails />} />
+          <Route path='/services/:slug/inquire' element={<ServiceInquiry />}/>
         </Routes>
       </div>
     </AuthGate>

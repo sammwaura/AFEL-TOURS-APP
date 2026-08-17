@@ -2,6 +2,8 @@ import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { getFeaturedHotels } from '../api/hotels';
 import HotelCard  from "../components/HotelCard";
+import ServiceCard from "./ServiceCard";
+import { getAllServices } from "../api/services";
 
 
 function Home() {
@@ -9,6 +11,7 @@ function Home() {
     const [name, setName] = useState('')
     const [city, setCity] = useState('')
     const [featuredHotels, setFeaturedHotels] = useState([])
+    const [services, setServices] = useState([])
     const [loading, setLoading] = useState(true)
 
 
@@ -17,6 +20,10 @@ function Home() {
         .then(setFeaturedHotels)
         .catch((err) => console.error('Failed to load featured hotels:', err))
         .finally(() => setLoading(false))
+
+        getAllServices()
+        .then(setServices)
+        .catch((err) => console.error('Failed to load services:', err) )
     }, [])
 
     const handleSearch = (e) => {
@@ -80,6 +87,28 @@ function Home() {
                         </button>
                     </form>
                 </div>
+            </section>
+
+                        {/* What We Do */}
+            <section className="max-w-6xl mx-auto px-6 py-16">
+            <div className="mb-8">
+                <p className="font-display text-xs font-semibold uppercase tracking-widest text-brass mb-2">
+                What We Do
+                </p>
+                <h2 className="font-display font-bold text-3xl text-charcoal">
+                Curated Experiences From Safaris to Beach Resorts
+                </h2>
+            </div>
+
+            {services.length === 0 ? (
+                <p className="font-display text-sm text-charcoal/60">Loading services…</p>
+            ) : (
+                <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+                {services.map((service) => (
+                    <ServiceCard key={service._id} service={service} />
+                ))}
+                </div>
+            )}
             </section>
 
             {/*Featured Roooms*/}

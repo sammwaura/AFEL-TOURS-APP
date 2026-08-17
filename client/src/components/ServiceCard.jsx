@@ -16,17 +16,17 @@ function ServiceCard ({ service }) {
                     <img src={photos[0]} alt={service.name} onError={() => setImgError(true)}
                     className='w-full h-full object-cover group-hover:scale-105 transition-transform duration-500' />
                 ) : (
-                    <span className='font-display text-xs uppercase tracking-widest text-charcoal/40'>
+                    <span className='font-display text-sm uppercase tracking-widest text-charcoal/40'>
                         AFEL TOURS KENYA
                     </span>
                 )}
             </div>
 
             <div className="p-5">
-                <h3 className="font-display font-semibold text-lg text-charcoal mb-2">
+                <h3 className="font-display font-semibold text-2xl text-charcoal mb-3">
                     {service.name}
                 </h3>
-                <p className="text-sm text-charcoal/70 line-clamp-2">
+                <p className="text-base leading-relaxed text-charcoal/70 line-clamp-3">
                     {service.shortDescription}
                 </p>
             </div>
