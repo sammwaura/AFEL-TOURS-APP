@@ -66,6 +66,8 @@ export const deleteService = async (req, res) => {
 //get single service by slug (cleaner URLs than raw ObjectId)
 export const getServiceBySlug = async (req, res) => {
     const { slug } = req.params;
+
+    
     try {
         const service = await Service.findOne({ slug });
         if (!service) {
