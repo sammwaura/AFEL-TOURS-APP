@@ -4,6 +4,7 @@ import { getFeaturedHotels } from '../api/hotels';
 import HotelCard  from "../components/HotelCard";
 import ServiceCard from "./ServiceCard";
 import { getAllServices } from "../api/services";
+import Testimonials from "./Testimonials";
 
 
 function Home() {
@@ -168,7 +169,9 @@ function Home() {
                     </div>
                 )}
             </section>
-        </div>
+        <Testimonials />
+    </div>
+
     )
 }
 
