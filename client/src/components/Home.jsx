@@ -111,6 +111,40 @@ function Home() {
             )}
             </section>
 
+            {/* About Us */}
+            <section className="bg-moss/5 border-y border-line">
+            <div className="max-w-6xl mx-auto px-6 py-16 grid grid-cols-1 md:grid-cols-2 gap-10 items-center">
+                <div>
+                <img
+                    src="/logo.png"
+                    alt="AFEL Tours"
+                    className="w-48 h-48 mx-auto md:mx-0"
+                />
+                </div>
+
+                <div>
+                <p className="font-display text-xs font-semibold uppercase tracking-widest text-brass mb-3">
+                    Who We Are
+                </p>
+                <h2 className="font-display font-bold text-3xl text-charcoal mb-4">
+                    Converging Nature &amp; Leisure
+                </h2>
+                <p className="text-charcoal/80 leading-relaxed mb-4">
+                    AFEL Tours — African Forests Escapade Limited — is a bush-to-beach
+                    curated tour company. We handle everything from hotel reservations
+                    and safari logistics to mountain hikes, corporate retreats, and
+                    honeymoon itineraries, working with trusted partners across Kenya's
+                    parks, coastlines, and highlands.
+                </p>
+                <p className="text-charcoal/80 leading-relaxed">
+                    Whatever the occasion — a solo escape, a family holiday, or a
+                    once-in-a-lifetime honeymoon — we design the journey and manage the
+                    details, so you can simply show up and experience it.
+                </p>
+                </div>
+            </div>
+            </section>
+
             {/*Featured Roooms*/}
             <section className="max-w-6xl mx-auto px-6 py-16">
                 <div className="flex items-baseline justify-between mb-8 border-b border-line pb-4">

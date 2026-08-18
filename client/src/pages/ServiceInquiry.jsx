@@ -110,7 +110,7 @@ function ServiceInquiry() {
   }
 
   return (
-    <div className="max-w-3xl mx-auto px-6 py-12">
+    <div className="max-w-4xl mx-auto px-6 py-12">
         <p className='font-display text-xs font-semibold uppercase tracking-widest text-brass mb-2'>
             Request To book
         </p>
