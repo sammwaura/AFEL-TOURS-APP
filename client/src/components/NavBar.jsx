@@ -31,12 +31,12 @@ function Navbar() {
       <div className="max-w-6xl mx-auto px-6 py-3 flex items-center justify-between">
         <Link to="/" className="flex items-center gap-2">
           <img src="/logo.png" alt="AFEL Tours" className="h-11 w-11" />
-          <span className="font-display font-bold text-xl tracking-tight text-charcoal">
+          <span className="font-display font-bold text-2xl tracking-tight text-charcoal">
             AFEL TOURS KENYA
           </span>
         </Link>
 
-        <nav className="flex items-center gap-6 font-display text-sm font-medium">
+        <nav className="flex items-center gap-6 font-display text-xl font-medium">
           <div className='relative' ref={menuRef}>
             <button onClick={() => setMenuOpen((prev) => !prev)}
               className='text-charcoal hover:text-moss transition-colors flex items-center gap-1'>
