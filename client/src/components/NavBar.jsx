@@ -1,9 +1,11 @@
 import { useEffect, useState, useRef } from 'react'
+import { useUser } from '@clerk/clerk-react'
 import { Link } from 'react-router-dom'
 import { SignedIn, SignedOut, SignInButton, UserButton } from '@clerk/clerk-react'
 import { getAllServices } from '../api/services'
 
 function Navbar() {
+  const { user } = useUser()
   const [services, setServices] = useState([])
   const [menuOpen, setMenuOpen] = useState(false)
   const menuRef = useRef(null)
@@ -77,6 +79,11 @@ function Navbar() {
             <Link to="/my-bookings" className="text-charcoal hover:text-moss transition-colors">
               My Bookings
             </Link>
+            {user?.publicMetadata?.role === 'admin' && (
+              <Link to='/admin' className='text-charcoal hover:text-moss transition-colors'>
+                Admin
+              </Link>
+            )}
             <UserButton />
           </SignedIn>
         </nav>
