@@ -12,6 +12,8 @@ import MyInquiries from './pages/MyInquiries'
 import ServiceDetails from './pages/ServiceDetails'
 import ServiceInquiry from './pages/ServiceInquiry'
 import AdminOverview from './pages/admin/AdminOverview'
+import AdminHotels from './pages/admin/AdminHotels'
+import AdminHotelForm from './pages/admin/AdminHotelForm'
 
 
 function App() {
@@ -25,7 +27,10 @@ function App() {
           </AdminGate>
         }
       >
-        <Route index element = {<AdminOverview />} />
+        <Route index element = {<AdminOverview />}/>
+        <Route path='hotels' element = {<AdminHotels />} />
+        <Route path='hotels/new' element = {<AdminHotelForm />} />
+        <Route path='hotels/:id/edit' element = {<AdminHotelForm />} />
         </Route>
 
         {/* Public site routes - wrapped with Navbar/Footer */}

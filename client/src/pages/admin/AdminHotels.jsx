@@ -57,16 +57,16 @@ return(
                 <p className="font-display text-charcoal/60">No hotels yet...</p>
             </div>
         ) : (
-            <div className="bg-white border border-line rounded-xl overflow-hidden">
-                <table className="w-full text-sm">
-                    <thread className="bg-paper border-b border-line">
+            <div className="bg-white border border-line rounded-xl overflow-x-hidden">
+                <table className="w-full text-sm table-auto border-collapse">
+                    <thead className="bg-paper border-b border-line">
                         <tr className="text-left font-display text-xs  uppercase tracking-wide text-charcoal/60">
-                        <th className="px-5 py-3">Name</th>
-                        <th className="px-5 py-3">City</th>
-                        <th className="px-5 py-3">Photos</th>
-                        <th className="px-5 py-3 text-right">Actions</th>
+                        <th className="px-5 py-3 whitespace-nowrap">Name</th>
+                        <th className="px-5 py-3 whitespace-nowrap">City</th>
+                        <th className="px-5 py-3 whitespace-nowrap">Photos</th>
+                        <th className="px-5 py-3 text-right whitespace-nowrap">Actions</th>
                         </tr>
-                    </thread>
+                    </thead>
                     <tbody>
                         {hotels.map((hotel) => (
                             <tr key={hotel._id} className="border-b border-line last:border-b-0">
