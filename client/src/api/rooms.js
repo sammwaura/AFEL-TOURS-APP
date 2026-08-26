@@ -29,3 +29,19 @@ export const getRoomsByHotel =  async (hotelId) => {
     const res = await axios.get(`${API_URL}/rooms/hotel/${hotelId}`)
     return res.data.data || []
 }
+
+export const createRoom = async (roomData) => {
+    const res = await axios.post(`${API_URL}/rooms`, roomData)
+    return res.data
+}
+
+export const updateRoom = async (id, roomData) => {
+    const res = await axios.post(`${API_URL}/rooms/${id}`, roomData)
+    return res.data
+}
+
+export const deleteRoom = async (id) => {
+    const res = await axios.post(`${API_URL}/rooms/${id}`)
+    return res.data
+}
+
