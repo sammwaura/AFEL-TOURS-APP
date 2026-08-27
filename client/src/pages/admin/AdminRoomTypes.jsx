@@ -116,10 +116,6 @@ function AdminRoomTypes() {
             )}
         </div>
     )
-
-
-
-
 }
 
 export default AdminRoomTypes
