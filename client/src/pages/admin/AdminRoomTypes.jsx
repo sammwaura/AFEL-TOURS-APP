@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { useParams, useNavigate } from "react-router-dom";
+import { useParams, useNavigate, Link } from "react-router-dom";
 import { getSingleHotel } from "../../api/hotels";
 import { deleteRoom, getRoomsByHotel } from "../../api/rooms";
 

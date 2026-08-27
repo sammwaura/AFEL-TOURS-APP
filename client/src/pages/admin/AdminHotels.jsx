@@ -81,10 +81,23 @@ return(
                                           className="font-display text-xs uppercase tracking-wide text-moss hover:text-brass">
                                         Edit
                                     </Link>
+                                    <Link
+                                        to={`/admin/hotels/${hotel._id}/rooms`}
+                                        className="font-display text-xs uppercase tracking-wide text-charcoal hover:text-brass"
+                                    >
+                                        Rooms
+                                    </Link>
+                                     <Link
+                                        to={`/admin/hotels/${hotel._id}/edit`}
+                                        className="font-display text-xs uppercase tracking-wide text-moss hover:text-brass"
+                                    >
+                                        Edit
+                                    </Link>
                                     <button onClick={() => handleDelete(hotel._id, hotel.name)} disabled={deletingId === hotel._id}
                                             className="font-display text-xs uppercase tracking-wide text-red-700 hover:text-red-900 disabled:opacity-40">
                                                 {deletingId === hotel._id ? 'Deleting...' : 'Delete'}
                                     </button>
+
                                 </td>
                             </tr>
                         ))}
