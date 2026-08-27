@@ -16,6 +16,8 @@ import AdminHotels from './pages/admin/AdminHotels'
 import AdminHotelForm from './pages/admin/AdminHotelForm'
 import AdminRoomTypes from './pages/admin/AdminRoomTypes'
 import AdminRoomForm from './pages/admin/AdminRoomForm'
+import AdminServices from './pages/admin/AdminServices'
+import AdminServiceForm from './pages/admin/AdminServiceForm'
 
 
 function App() {
@@ -36,6 +38,9 @@ function App() {
         <Route path="hotels/:hotelId/rooms" element={<AdminRoomTypes />} />
         <Route path="hotels/:hotelId/rooms/new" element={<AdminRoomForm />} />
         <Route path="hotels/:hotelId/rooms/:roomId/edit" element={<AdminRoomForm />} />
+        <Route path="services" element={<AdminServices />} />
+        <Route path="services/new" element={<AdminServiceForm />} />
+        <Route path="services/:id/edit" element={<AdminServiceForm />} />
         </Route>
 
         {/* Public site routes - wrapped with Navbar/Footer */}
