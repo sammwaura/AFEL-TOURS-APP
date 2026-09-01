@@ -1,33 +1,25 @@
-import multer from 'multer'
-import path from 'path'
+import 'dotenv/config';
+import { v2 as cloudinary } from 'cloudinary';
+import { CloudinaryStorage } from 'multer-storage-cloudinary';
+import multer from 'multer';
 
-const storage  =  multer.diskStorage({
-    destination: function (req, file, cb){
-        cb(null, 'uploads/');
-    },
-    filename: function (req, file, cb){
-        //unique filename: timestamp + original name(this avoids overwriting duplicates)
-        const uniqueName = `${Date.now()}-${file.originalname}`;
-        cb(null,uniqueName)
+cloudinary.config({
+    cloud_name: process.env.CLOUDINARY_CLOUD_NAME,
+    api_key: process.env.CLOUDINARY_API_KEY,
+    api_secret: process.env.CLOUDINARY_API_SECRET,
+});
+
+const storage = new CloudinaryStorage({
+    cloudinary,
+    params: {
+        folder: 'afel-tours',
+        allowed_formats: ['jpg', 'jpeg', 'png', 'webp'],
     },
 });
 
-const fileFilter = (req, file, cb) => {
-    console.log('Uploaded file mimetype:', file.mimetype); // TEMP DEBUG
-    const allowedTypes = ['image/jpeg', 'image/jpg', 'image/png', 'image/webp', 'application/octet-stream' ];
-    const allowedExtensions = /\.(jpe?g|png|webp)$/i;
-
-    if(allowedTypes.includes(file.mimetype) && allowedExtensions.test(file.originalname)){
-        cb(null, true);
-    } else {
-        cb(new Error('Only .jpeg, .jpg, .png and .webp files are allowed'), false);
-    }
-};
-
 const upload = multer({
     storage,
-    fileFilter,
-    limits: { fileSize: 5 * 1024 * 1024}, //5MB max per file
+    limits: { fileSize: 5 * 1024 * 1024 },
 });
 
 export default upload;

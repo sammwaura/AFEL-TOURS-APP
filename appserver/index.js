@@ -32,7 +32,6 @@ const connectDB = async () => {
     }
 };
 
-app.use('/uploads', express.static('uploads'));
 app.use("/api/hotels", hotelRoutes);
 app.use("/api/rooms", roomRoutes);
 app.use("/api/bookings", bookingRoutes);
