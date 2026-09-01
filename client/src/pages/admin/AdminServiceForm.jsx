@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react'
 import { useParams, useNavigate } from 'react-router-dom'
 import { getServiceById, createService, updateService } from '../../api/services'
+import PhotoUploader from '../../components/PhotoUploader'
 
 const categoryOptions = [
   { value: 'safari', label: 'Safari' },
@@ -23,7 +24,7 @@ function AdminServiceForm() {
     shortDescription: '',
     description: '',
     highlights: '',
-    photos: '',
+    photos: [],
     startingPrice: '',
     featured: false,
   })
@@ -43,7 +44,7 @@ function AdminServiceForm() {
           shortDescription: service.shortDescription || '',
           description: service.description || '',
           highlights: (service.highlights || []).join(', '),
-          photos: (service.photos || []).join(', '),
+          photos: service.photos || [],
           startingPrice: service.startingPrice || '',
           featured: service.featured || false,
         })
@@ -88,10 +89,7 @@ function AdminServiceForm() {
         .split(',')
         .map((h) => h.trim())
         .filter(Boolean),
-      photos: form.photos
-        .split(',')
-        .map((p) => p.trim())
-        .filter(Boolean),
+      photos: form.photos,
       startingPrice: form.startingPrice ? Number(form.startingPrice) : undefined,
       featured: form.featured,
     }
@@ -204,18 +202,9 @@ function AdminServiceForm() {
           />
         </div>
 
-        <div>
-          <label className="block font-display text-xs uppercase tracking-wide text-moss mb-1">
-            Photo URLs (comma-separated)
-          </label>
-          <textarea
-            value={form.photos}
-            onChange={handleChange('photos')}
-            rows={2}
-            placeholder="http://localhost:8000/uploads/photo1.jpg"
-            className="w-full border border-line rounded-lg px-3 py-2 font-display text-sm outline-none focus:border-brass resize-none"
-          />
-        </div>
+        <PhotoUploader photos={form.photos} onChange={(newPhotos) => setForm((prev) => ({...prev, photos: newPhotos }))} />
+
+       
 
         <div>
           <label className="block font-display text-xs uppercase tracking-wide text-moss mb-1">

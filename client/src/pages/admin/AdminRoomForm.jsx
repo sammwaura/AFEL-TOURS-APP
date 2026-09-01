@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react'
 import { useParams, useNavigate, Link } from 'react-router-dom'
 import { getSingleRoom, createRoom, updateRoom } from '../../api/rooms'
+import PhotoUploader from '../../components/PhotoUploader'
 
 function AdminRoomForm() {
   const { hotelId, roomId } = useParams()
@@ -12,7 +13,7 @@ function AdminRoomForm() {
     pricePerNight: '',
     maxGuests: '',
     amenities: '',
-    photos: '',
+    photos: [],
     featured: false,
   })
   const [loading, setLoading] = useState(isEditing)
@@ -28,7 +29,7 @@ function AdminRoomForm() {
           pricePerNight: room.pricePerNight || '',
           maxGuests: room.maxGuests || '',
           amenities: (room.amenities || []).join(', '),
-          photos: (room.photos || []).join(', '),
+          photos: room.photos || [],
           featured: room.featured || false,
         })
       })
@@ -55,10 +56,7 @@ function AdminRoomForm() {
         .split(',')
         .map((a) => a.trim())
         .filter(Boolean),
-      photos: form.photos
-        .split(',')
-        .map((p) => p.trim())
-        .filter(Boolean),
+      photos: form.photos,
       featured: form.featured,
     }
 
@@ -151,18 +149,8 @@ function AdminRoomForm() {
           />
         </div>
 
-        <div>
-          <label className="block font-display text-xs uppercase tracking-wide text-moss mb-1">
-            Photo URLs (comma-separated)
-          </label>
-          <textarea
-            value={form.photos}
-            onChange={handleChange('photos')}
-            rows={2}
-            placeholder="http://localhost:8000/uploads/photo1.jpg"
-            className="w-full border border-line rounded-lg px-3 py-2 font-display text-sm outline-none focus:border-brass resize-none"
-          />
-        </div>
+        <PhotoUploader photos={form.photos} onChange={(newPhotos) => setForm((prev) => ({...prev, photos: newPhotos}))} />
+
 
         <label className="flex items-center gap-2 font-display text-sm text-charcoal">
           <input

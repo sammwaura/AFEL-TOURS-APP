@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import { useParams, useNavigate } from "react-router-dom";
 import { getSingleHotel, createHotel, updateHotel } from "../../api/hotels";
+import PhotoUploader from "../../components/PhotoUploader";
 
 
 function AdminHotelForm() {
@@ -16,7 +17,7 @@ function AdminHotelForm() {
         address: '',
         description: '',
         amenities: '',
-        photos: '',
+        photos: [],
     })
     const [loading, setLoading ] = useState(isEditing)
     const [saving, setSaving ] = useState(false)
@@ -34,7 +35,7 @@ function AdminHotelForm() {
                     address: hotel.address || '',
                     description: hotel.description || '',
                     amenities: (hotel.amenities || []).join(', '),
-                    photos: (hotel.photos || []).join(', '),
+                    photos: hotel.photos || [],
                 })
             })
             .catch((err) => console.error('Failed to load hotel:', err))
@@ -61,10 +62,7 @@ function AdminHotelForm() {
                 .split(',')
                 .map((a) => a.trim())
                 .filter(Boolean),
-            photos: form.photos
-                .split(',')
-                .map((p) => p.trim())
-                .filter(Boolean),
+            photos: form.photos,
         }
 
         try {
@@ -133,13 +131,7 @@ function AdminHotelForm() {
                        className="w-full border border-line rounded-lg px-3 py-2 font-display text-sm outline-none focus:border-brass"/>
              </div>
 
-             <div>
-                <label className="block font-display text-xs uppercase tracking-wide text-moss mb-1">Photo URLs (comma-separated)</label>
-                <textarea value={form.photos} onChange={handleChange('photos')} rows={2} placeholder="http://localhost:8000/uploads/photo1.jpg, http://localhost:8000/uploads/photo2.jpg"
-                          className="w-full border border-line rounded-lg px-3 py-2 font-display text-sm outline-none focus:border-brass resize-none">
-                </textarea>
-                <p className="text-xs text-charcoal/50 mt-1">Photo Upload UI is coming later step - for now, paste URLs from postman uploads</p>
-             </div>
+            <PhotoUploader photos={form.photos} onChange={(newPhotos) => setForm((prev) => ({...prev, photos: newPhotos}))}/>
 
              {error && <p className="font-display text-xs text-red-700">{error}</p>}
 
