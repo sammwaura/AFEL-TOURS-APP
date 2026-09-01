@@ -1,7 +1,7 @@
 import Booking from '../models/Booking.js';
 import Room from '../models/Room.js';
 
-//helper: check if bthe room is available on the specific dates
+//helper: check if the room is available on the specific dates
 const isRoomAvailable = async (roomId, checkIn, checkOut, excludeBookingId = null) => {
     const filter = {
         room: roomId,
@@ -185,6 +185,31 @@ export const checkAvailability = async (req, res) => {
         });
     }
 };
+
+//get ALL bookings across all hotels (admin inbox)
+export const getAllBookings =  async (req, res) => {
+
+    try {
+        const bookings = await Booking.find({})
+            .populate('room')
+            .populate('hotel')
+            .sort({ createdAt: -1 });
+
+
+        res.status(200).json({
+            success: true,
+            message: 'Successful',
+            data: bookings,
+        });
+    } catch (err) {
+        res.status(500).json({
+            success: false,
+            message: 'Failed to fetch bookings',
+            error: err.message,
+        });
+    }
+};
+
 
 
 
