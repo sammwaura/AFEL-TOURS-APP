@@ -19,6 +19,7 @@ import AdminRoomForm from './pages/admin/AdminRoomForm'
 import AdminServices from './pages/admin/AdminServices'
 import AdminServiceForm from './pages/admin/AdminServiceForm'
 import AdminBookings from './pages/admin/AdminBookings'
+import AdminInquiries from './pages/admin/AdminInquiries'
 
 
 function App() {
@@ -43,6 +44,7 @@ function App() {
         <Route path="services/new" element={<AdminServiceForm />} />
         <Route path="services/:id/edit" element={<AdminServiceForm />} />
         <Route path="bookings" element={<AdminBookings />} />
+        <Route path="inquiries" element={<AdminInquiries />} />
         </Route>
 
         {/* Public site routes - wrapped with Navbar/Footer */}
