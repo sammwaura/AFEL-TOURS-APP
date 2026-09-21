@@ -17,7 +17,22 @@ app.use('/uploads', express.static('uploads')); // Serve static files from the "
 const PORT = process.env.PORT || 8000;
 
 // Middleware
-app.use(cors({ origin: process.env.CLIENT_URL, credentials: true }));
+const allowedOrigins = [
+    'https://africanforestsescapade.com',
+    'https://www.africanforestsescapade.com',
+    'http://localhost:5173',
+];
+
+app.use(cors({
+    origin: function (origin, callback) {
+        if (!origin || allowedOrigins.includes(origin)) {
+            callback(null, true);
+        } else {
+            callback(new Error('Not allowed by CORS'));
+        }
+    },
+    credentials: true,
+}));
 app.use(clerkMiddleware());
 app.use(express.json());
 

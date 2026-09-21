@@ -1,5 +1,6 @@
 import { Link } from "react-router-dom";
 import { useState } from "react";
+import { optimizeImage } from '../utilis/optimizeImage'
 
 function HotelCard({ hotel }) {
     const [imgError, setImgError] = useState(false)
@@ -14,7 +15,7 @@ function HotelCard({ hotel }) {
             <div className="relative aspect-4/3 overflow-hidden bg-line flex items-center judtify-center">
                 {hasValidPhoto ? (
                     <img 
-                        src={photos[0]}
+                        src={optimizeImage(photos[0], 500)}
                         alt={hotel.name}
                         onError={() => setImgError(true)}
                         className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"/>

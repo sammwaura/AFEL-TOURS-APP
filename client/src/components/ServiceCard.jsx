@@ -1,5 +1,6 @@
 import { Link } from 'react-router-dom'
 import { useState, useEffect } from 'react'
+import { optimizeImage } from '../utilis/optimizeImage'
 
 function ServiceCard ({ service }) {
     const [imgError, setImgError ] = useState(false)
@@ -13,7 +14,7 @@ function ServiceCard ({ service }) {
         >
             <div className='relative aspect-4/3 overflow-hidden bg-line flex items-center justify-center'>
                 {hasValidPhoto ? (
-                    <img src={photos[0]} alt={service.name} onError={() => setImgError(true)}
+                    <img src={optimizeImage(photos[0], 500)} alt={service.name} onError={() => setImgError(true)}
                     className='w-full h-full object-cover group-hover:scale-105 transition-transform duration-500' />
                 ) : (
                     <span className='font-display text-sm uppercase tracking-widest text-charcoal/40'>

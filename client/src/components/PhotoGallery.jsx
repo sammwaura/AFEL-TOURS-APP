@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { optimizeImage } from "../utilis/optimizeImage";
 
 
 function PhotoGallery({ photos = [] }){
@@ -9,7 +10,7 @@ function PhotoGallery({ photos = [] }){
         <div>
             <div className="aspect-16/10 overflow-hidden bg-line mb-3">
             <img 
-            src={displayPhotos[activeIndex]} 
+            src={optimizeImage(photos[activeIndex], 1000)}
             alt={`Room photo ${activeIndex + 1}`}
             onError={(e) => { e.target.src = '/placeholder-room.jpg' }}
             className="w-full h-full object-cover"
@@ -25,7 +26,7 @@ function PhotoGallery({ photos = [] }){
                         className={`shrink-0 w-20 h-16 overflow-hidden border-2 ${i === activeIndex ? 'border-brass' : 'border-transparent'}`}
                         >
                             <img 
-                            src={photo} 
+                            src={optimizeImage(photo, 150)} 
                             alt={`Thumbnail ${i + 1}`}
                             onError={(e) => {e.target.src = 'placeholder-room.jpg' }}
                             className="w-full h-full object-cover"

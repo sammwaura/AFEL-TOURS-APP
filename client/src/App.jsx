@@ -4,7 +4,7 @@ import Footer from './components/Footer'
 import AuthGate from './components/AuthGate'
 import AdminGate from './components/AdminGate'
 import AdminLayout from './components/AdminLayout'
-import Home from './components/Home'
+import Home from './pages/Home'
 import HotelListing from './pages/HotelListing'
 import HotelDetails from './pages/HotelDetails'
 import Inquiry from './pages/Inquiry'
@@ -20,6 +20,7 @@ import AdminServices from './pages/admin/AdminServices'
 import AdminServiceForm from './pages/admin/AdminServiceForm'
 import AdminBookings from './pages/admin/AdminBookings'
 import AdminInquiries from './pages/admin/AdminInquiries'
+import WhatsAppButton from './components/WhatsAppbutton'
 
 
 function App() {
@@ -67,6 +68,7 @@ function App() {
         }
         />
       </Routes>
+      <WhatsAppButton />
     </AuthGate>
   )
 }

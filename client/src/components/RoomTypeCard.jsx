@@ -1,3 +1,5 @@
+import { optimizeImage } from '../utilis/optimizeImage'
+
 function RoomTypeCard({ room, isSelected, onSelect }) {
 
     return (
@@ -10,7 +12,7 @@ function RoomTypeCard({ room, isSelected, onSelect }) {
             {room.photos && room.photos.length > 0 && (
                 <div className="mb-3" aspect-video bg-line overflow-hidden>
                     <img 
-                      src={room.photos[0]}
+                      src={optimizeImage(room.photos[0], 500)}
                         alt={room.roomType}
                         className="w-full h-full object-cover"
                         onError={(e) => {
