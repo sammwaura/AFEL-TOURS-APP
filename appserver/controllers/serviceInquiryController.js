@@ -5,6 +5,7 @@ import Service from '../models/Service.js';
 export const createServiceInquiry = async (req, res) => {
     const {
         service,
+        itinerary,
         userId,
         userEmail,
         userPhone,
@@ -34,6 +35,7 @@ export const createServiceInquiry = async (req, res) => {
 
         const newInquiry = new ServiceInquiry({
             service,
+            itinerary,
             userId,
             userEmail,
             userPhone,

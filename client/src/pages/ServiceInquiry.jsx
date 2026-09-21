@@ -1,5 +1,6 @@
 import { useEffect, useState } from 'react'
 import { useParams, useNavigate } from 'react-router-dom'
+import { useSearchParams } from 'react-router-dom'
 import { useUser, SignInButton } from '@clerk/clerk-react'
 import { getServiceBySlug } from '../api/services'
 import { createServiceInquiry } from '../api/serviceInquiries'
@@ -13,6 +14,8 @@ function ServiceInquiry() {
   const [service, setService] = useState(null)
   const [loading, setLoading] = useState(true)
 
+  const [searchParams] = useSearchParams()
+  const itineraryId = searchParams.get('itinerary')
   const [startDate, setStartDate] = useState('')
   const [endDate, setEndDate] = useState('')
   const [groupSize, setGroupSize] = useState(1)
@@ -53,6 +56,7 @@ function ServiceInquiry() {
     try {
         await createServiceInquiry({
             service: service._id,
+            itinerary: itineraryId || undefined,
             userId: user.id,
             userEmail: user.primaryEmailAddress?.emailAddress,
             userPhone: phone,

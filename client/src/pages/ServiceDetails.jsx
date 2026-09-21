@@ -1,4 +1,5 @@
 import { useEffect, useState } from 'react'
+import { getItinerariesByService } from '../api/itineraries'
 import { useParams, Link } from 'react-router-dom'
 import { getServiceBySlug } from '../api/services'
 import PhotoGallery from '../components/PhotoGallery'
@@ -8,6 +9,7 @@ function ServiceDetails() {
     const { slug } = useParams()
     const [service, setService] = useState(null)
     const [loading, setLoading] = useState(true)
+    const [itineraries, setItineraries] = useState([])
 
     useEffect(() => {
         getServiceBySlug(slug)
@@ -15,6 +17,13 @@ function ServiceDetails() {
             .catch((err) => console.error('Failed to Load service:', err))
             .finally(() => setLoading(false))
     }, [slug])
+
+    useEffect(() => {
+      if (!service?._id) return
+        getItinerariesByService(service._id)
+        .then(setItineraries)
+        .catch((err) => console.error('Failed to load itineraries:', err))
+         }, [service])
 
 
     if (loading) {
@@ -73,9 +82,44 @@ function ServiceDetails() {
                     </p>
                 )}
 
-                <Link to={`/services/${service.slug}/inquire`} className='inline-block bg-brass text-white font-display text-sm font-semibold uppercase tracking-wide px-8 py-3.5 rounded-full hover:bg-moss transition-colors'>
+                {itineraries.length > 0 ? (
+                    <div className="mt-10">
+                        <h2 className="font-display font-semibold text-2xl text-charcoal mb-6">
+                        Available Itineraries
+                        </h2>
+                        <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
+                        {itineraries.map((itinerary) => (
+                            <Link
+                            key={itinerary._id}
+                            to={`/itineraries/${itinerary._id}`}
+                            className="block border border-line rounded-xl bg-white p-5 hover:border-brass transition-colors"
+                            >
+                            <h3 className="font-display font-bold text-lg text-charcoal mb-1">
+                                {itinerary.name}
+                            </h3>
+                            <p className="font-display text-xs uppercase tracking-wide text-moss mb-3">
+                                {itinerary.park}
+                            </p>
+                            <div className="flex flex-wrap gap-3 font-display text-xs text-charcoal/60 mb-3">
+                                <span>{itinerary.nights}N / {itinerary.days}D</span>
+                                <span>Up to {itinerary.maxGroupSize} guests</span>
+                                {itinerary.nearestHotel && <span>Near {itinerary.nearestHotel.name}</span>}
+                            </div>
+                            <p className="font-display text-base font-semibold text-ink">
+                                KES {itinerary.price?.toLocaleString()}
+                            </p>
+                            </Link>
+                        ))}
+                        </div>
+                    </div>
+                    ) : (
+                    <Link
+                        to={`/services/${service.slug}/inquire`}
+                        className="inline-block bg-brass text-white font-display text-sm font-semibold uppercase tracking-wide px-8 py-3.5 rounded-full hover:bg-moss transition-colors"
+                    >
                         Request This Experience
-                </Link>
+                    </Link>
+                )}
             </div>
         </div>
     )

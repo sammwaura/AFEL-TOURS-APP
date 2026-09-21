@@ -100,6 +100,27 @@ function AdminServices() {
                       {deletingId === service._id ? 'Deleting…' : 'Delete'}
                     </button>
                   </td>
+                  <td className="px-5 py-4 text-right space-x-3 whitespace-nowrap">
+                    <Link
+                      to={`/admin/services/${service._id}/itineraries`}
+                      className="font-display text-xs uppercase tracking-wide text-charcoal hover:text-brass"
+                    >
+                      Itineraries
+                    </Link>
+                    <Link
+                      to={`/admin/services/${service._id}/edit`}
+                      className="font-display text-xs uppercase tracking-wide text-moss hover:text-brass"
+                    >
+                      Edit
+                    </Link>
+                    <button
+                      onClick={() => handleDelete(service._id, service.name)}
+                      disabled={deletingId === service._id}
+                      className="font-display text-xs uppercase tracking-wide text-red-700 hover:text-red-900 disabled:opacity-40"
+                    >
+                      {deletingId === service._id ? 'Deleting…' : 'Delete'}
+                    </button>
+                  </td>
                 </tr>
               ))}
             </tbody>

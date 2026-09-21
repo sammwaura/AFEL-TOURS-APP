@@ -20,7 +20,10 @@ import AdminServices from './pages/admin/AdminServices'
 import AdminServiceForm from './pages/admin/AdminServiceForm'
 import AdminBookings from './pages/admin/AdminBookings'
 import AdminInquiries from './pages/admin/AdminInquiries'
-import WhatsAppButton from './components/WhatsAppbutton'
+import WhatsAppButton from './components/WhatsAppButton'
+import ItineraryDetails from './pages/ItineraryDetails'
+import AdminItineraries from './pages/admin/AdminItineraries'
+import AdminItineraryForm from './pages/admin/AdminItinerariesForm'
 
 
 function App() {
@@ -41,9 +44,12 @@ function App() {
         <Route path="hotels/:hotelId/rooms" element={<AdminRoomTypes />} />
         <Route path="hotels/:hotelId/rooms/new" element={<AdminRoomForm />} />
         <Route path="hotels/:hotelId/rooms/:roomId/edit" element={<AdminRoomForm />} />
-        <Route path="services" element={<AdminServices />} />
-        <Route path="services/new" element={<AdminServiceForm />} />
-        <Route path="services/:id/edit" element={<AdminServiceForm />} />
+        <Route path='services' element = {<AdminServices />} />
+        <Route path='services/new' element = {<AdminServiceForm />} />
+        <Route path='services/:id/edit' element = {<AdminServiceForm />} />
+        <Route path="services/:serviceId/itineraries" element={<AdminItineraries />} />
+        <Route path="services/:serviceId/itineraries/new" element={<AdminItineraryForm />} />
+        <Route path="services/:serviceId/itineraries/:id/edit" element={<AdminItineraryForm />} />
         <Route path="bookings" element={<AdminBookings />} />
         <Route path="inquiries" element={<AdminInquiries />} />
         </Route>
@@ -61,6 +67,7 @@ function App() {
               <Route path='/my-bookings' element={<MyInquiries />} />
               <Route path="/services/:slug" element={<ServiceDetails />} />
               <Route path='/services/:slug/inquire' element={<ServiceInquiry />}/>
+              <Route path='/itineraries/:id' element={<ItineraryDetails />} />
         </Routes>
         </div>
        <Footer/>

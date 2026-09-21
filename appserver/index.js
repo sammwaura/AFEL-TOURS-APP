@@ -9,6 +9,7 @@ import bookingRoutes from "./routes/bookingRoutes.js";
 import uploadRoutes from "./routes/uploadRoutes.js";
 import serviceRoutes from "./routes/serviceRoutes.js";
 import requireAdmin from "./middleware/requireAdmin.js";
+import itineraryRoutes from './routes/itineraryRoutes.js';
 
 dotenv.config();
 
@@ -21,6 +22,7 @@ const allowedOrigins = [
     'https://africanforestsescapade.com',
     'https://www.africanforestsescapade.com',
     'http://localhost:5173',
+    'http://localhost:5174',
 ];
 
 app.use(cors({
@@ -52,6 +54,7 @@ app.use("/api/rooms", roomRoutes);
 app.use("/api/bookings", bookingRoutes);
 app.use("/api/upload", uploadRoutes);
 app.use("/api/services", serviceRoutes);
+app.use('/api/itineraries', itineraryRoutes);
 
 
 app.get('/api/test-admin', requireAdmin, (req, res) => {

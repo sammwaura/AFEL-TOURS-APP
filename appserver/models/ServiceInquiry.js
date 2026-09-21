@@ -7,6 +7,10 @@ const ServiceInquirySchema = new mongoose.Schema(
             ref: 'Service',
             required: true,
         },
+        itinerary: {
+        type: mongoose.Schema.Types.ObjectId,
+        ref: 'Itinerary',
+        },
         userId: {
             type: String, // Clerk user Id
             required: true,
