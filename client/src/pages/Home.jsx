@@ -145,7 +145,7 @@ function Home() {
       {/* Our Properties */}
       <section className="max-w-6xl mx-auto px-6 py-16">
         <div className="flex items-baseline justify-between mb-8 border-b border-line pb-4">
-          <h2 className="font-display font-bold text-3xl sm:text-4xl text-charcoal">Our Properties</h2>
+          <h2 className="font-display font-bold text-3xl sm:text-4xl text-charcoal">Featured Hotels</h2>
           <span className="font-display text-xs uppercase tracking-wide text-moss">
             {featuredHotels.length} hotels
           </span>
